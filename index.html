@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+Theme by Beixibaobao & Nekotora Ver.11.2
+哟！客观，又来看代码了吗？
+-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1">
+    <meta name="referrer" content="never">
+    <title>动态星空效果的页面布局</title>
+    <meta name="description" content="这里是北熙宝宝的个人网站，期待与更多的人相遇！">
+    <meta name="keywords" content="北熙宝宝,北熙,宝宝,小北熙,小北北,北小熙,二次元,个人网站,博客,动漫,动画,宅,宅文化">
+    <link rel="apple-touch-icon-precomposed" href="https://api.beixibaobao.com/img/blog/logo.jpg">
+    <!-- 方便你们抄代码，这个是我自己的console哦！-->
+    <script type="text/javascript" async="" src="./console.js"></script>
+    <!-- 上面就是我的console-->
+    <!--这个是以前clone下来的代码，现在怀疑是没用的代码【就静态页面来说的话】
+		<script type="text/javascript" async="" src="./source/analytics.js"></script>
+		<script async="" src="./js"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-123362104-2');
+		</script>-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1888336290390212"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <link href="./nekotora.css" rel="stylesheet">
+    <link href="./flaghome.css" rel="stylesheet">
+    <!-- 网址转跳 -->
+    <nav>
+        <a href="https://beixibaobao.com/" class="active">Index</a>
+        <a class="clip"></a>
+        <a href="https://blog.beixibaobao.com/">Blog</a>
+        <a class="clip"></a>
+        <a href="#">Lynne</a>
+    </nav>
+    <!-- 背景 -->
+    <div class="background">
+        <canvas id="startrack" width="1536" height="1039"></canvas>
+        <div class="cover"></div>
+    </div>
+    <div class="main">
+        <div class="ch intro">
+            <div class="container">
+                <div class="hello">
+                    <!-- 欢迎词，实际上好几句随机出现，如何实现的呢? -->
+                    <h1 id="slogan">
+                        欢迎大家光临星象馆<br>
+                        这里有着无论何时永远不会消失<br>
+                        美丽的无穷光辉<br>
+                        满天的星星等候着大家的到来</h1>
+                    <h2>
+                        <div class="circle">
+                            <!-- 三个彩色圆点 -->
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        Lynne
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <!-- 下滑第二页内容 -->
+        <div class="ch about">
+            <div class="container">
+                <h2 class="chtitle">
+                    Who is
+                    <span>Lynn</span>
+                    ？
+                </h2>
+                <div class="clear">
+                    <div class="introduct">
+                        <!-- 头像 -->
+                        <img class="avatar" src="https://api.beixibaobao.com/img/blog/logo.jpg">
+                        <p>某种颜色的女孩子 和某种颜色的男孩子相遇的话 他们会形成什么颜色呢？</p>
+                        <p>一定还会是纯白色！就像刚铺好的画布一般 有着未来的颜色。</p>
+                        <p>所以恋爱一定是白色的，能让两人描绘下去的净洁纯真的白色。</p>
+                        <br>
+                        <p style="padding-bottom:1em">How lucky to meet you!</p>
+                        <p>
+                            你好，这里是Lynn
+                            <sup>Lynne</sup>
+                            ，21岁，是学生，对有趣的世界和可能有趣的你感到好奇，热爱It和ACG文化，正在尝试努力学习中。
+                        </p>
+                        <p>希望能与你在比特之海的繁星之下相见！</p>
+                        <!-- 这个是？css或js里应该有体现 -->
+                        <div class="chatbox">
+                            <div class="line loading">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 技能清单 -->
+                    <ul class="skill clear">
+                        <li>
+                            <p>HTML5/CSS3</p>
+                            <div class="progress">
+                                <div style="width:35%">
+                                </div>
+                                <span>制作网站程度的能力</span>
+                            </div>
+                        </li>
+                        <li>
+                            <p>JavaScript/Typescript</p>
+                            <div class="progress">
+                                <div style="width:10%"></div>
+                                <span>使用现代轮子程度的能力</span>
+                            </div>
+                        </li>
+                        <li>
+                            <p>PHP</p>
+                            <div class="progress">
+                                <div style="width:10%"></div>
+                                <span>赞美最好的语言程度的能力</span>
+                            </div>
+                        </li>
+                        <li>
+                            <p>数字设计</p>
+                            <div class="progress">
+                                <div style="width:10%"></div>
+                                <span>让自己舒服程度的能力</span>
+                            </div>
+                        </li>
+                        <li>
+                            <p>文学</p>
+                            <div class="progress">
+                                <div style="width:10%"></div>
+                                <span>写骚东西的能力</span>
+                            </div>
+                        </li>
+                        <li>
+                            <p>搞事情</p>
+                            <div class="progress">
+                                <div style="width:89%">
+                                </div>
+                                <span>让事情发生程度的能力</span>
+                            </div>
+                        </li>
+                        <li>
+                            <p>魔法</p>
+                            <div class="progress">
+                                <div style="width:25%">
+                                </div>
+                                <span>和普通人相同程度的能力</span>
+                            </div>
+                        </li>
+                        <li>
+                            <p>MoePower</p>
+                            <div class="progress">
+                                <div style="width:89.5%">
+                                </div>
+                                <span>成为萌二程度的能力</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 个人社交网站转跳 -->
+        <div class="find ch">
+            <div class="container links">
+                <h2 class="chtitle">
+                    北熙宝宝生活的
+                    <span>地方</span>
+                </h2>
+                <div class="clear col-3">
+                    <a href="https://blog.beixibaobao.com/" target="_blank">
+                        <div class="item">
+                            <div class="bg" style="background-color: #28A9E0"></div>
+                            <div class="inner"><span>博客</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- 空地址，返回当前页 -->
+                    <a href="#" target="_blank">
+                        <div class="item">
+                            <div class="bg" style="background-color: #28A9E0"></div>
+                            <div class="inner">
+                                <span>实验室</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://beixibaobao.com/" target="_blank">
+                        <div class="item">
+                            <div class="bg" style="background-color: #28A9E0"></div>
+                            <div class="inner">
+                                <span>任意门</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="clear">
+                    <a href="http://wpa.qq.com/msgrd?v=3&uin=1215525740&site=qq&menu=yes" target="_blank">
+                        <div class="item">
+                            <div class="bg" style="background-color: #28A9E0"></div>
+                            <div class="inner">
+                                <i class="icon-qq"></i>
+                                <span>QQ</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="mailto:support@beixibaobao.com" target="_blank">
+                        <div class="item">
+                            <div class="bg" style="background-color: #28A9E0">
+                            </div>
+                            <div class="inner">
+                                <i class="icon-mail"></i>
+                                <span>Mail</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.weibo.com/beixibaobao" target="_blank">
+                        <div class="item">
+                            <div class="bg" style="background-color: #E6162D"></div>
+                            <div class="inner">
+                                <i class="icon-weibo"></i>
+                                <span>Weibo</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://space.bilibili.com/305018129" target="_blank">
+                        <div class="item">
+                            <div class="bg" style="background-color: #F9A2A8"></div>
+                            <div class="inner">
+                                <i class="icon-bilibili"></i>
+                                <span>Bilibili</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://twitter.com/Hikurn_Xi" target="_blank">
+                        <div class="item">
+                            <div class="bg" style="background-color: #28A9E0"></div>
+                            <div class="inner">
+                                <i class="icon-twitter"></i>
+                                <span>Twitter</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.zhihu.com/people/bei-xi-bao-bao" target="_blank">
+                        <div class="item">
+                            <div class="bg" style="background-color: #0F88EB"></div>
+                            <div class="inner">
+                                <i class="icon-zhihu"></i>
+                                <span>知乎</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://bangumi.tv/user/446828" target="_blank">
+                        <div class="item">
+                            <div class="bg" style="background-color: #F09199"></div>
+                            <div class="inner">
+                                <i class="icon-bookmark"></i>
+                                <span>Bangumi</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://music.163.com/#/user/home?id=1494200697" target="_blank">
+                        <div class="item">
+                            <div class="bg" style="background-color: #F12D35"></div>
+                            <div class="inner"><i class="icon-netease_music"></i>
+                                <span>网易云音乐</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://github.com/beixibaobao" target="_blank">
+                        <div class="item">
+                            <div class="bg" style="background-color: #353535"></div>
+                            <div class="inner">
+                                <i class="icon-github"></i>
+                                <span>Github</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/beixibaobao/" target="_blank">
+                        <div class="item">
+                            <div class="bg" style="background-color: #b600ff"></div>
+                            <div class="inner">
+                                <i class="icon-instagram"></i>
+                                <span>Instgram</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- 友链 -->
+        <!-- <div class="gate ch">
+            <div class="container links">
+                <h2 class="chtitle">
+                    女子寮
+                    <span>の</span>
+                    舍友们
+                </h2>
+                <div class="clear">
+                    <a href="https://www.wikimoe.com/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://api.beixibaobao.com/img/links/wikimoe.com.jpeg">
+                            </div>
+                            <div class="inner">
+                                <h5>维基萌</h5>
+                                <p>萌就是正义</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://img.miui.uk/" target="_blank">
+                        <div class="item akarin">
+                            <div class="avatar">
+                                <img src="https://doge.uk/images/avatar.png">
+                            </div>
+                            <div class="inner">
+                                <h5>
+                                    <span style="opacity: .3">老松鼠</span>
+                                    图床
+                                </h5>
+                                <p>老松鼠的私人图床</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://doge.uk/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://doge.uk/images/avatar.png">
+                            </div>
+                            <div class="inner">
+                                <h5>老松鼠</h5>
+                                <p>若不是真的废物,谁又愿意混吃等死呢？</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://networkos.club/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://networkos.club/wp-content/uploads/2021/01/head.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>不明のNetWork OS</h5>
+                                <p>Just a drop of water suffices</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://bbs.inapom.com/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://bbs.inapom.com/favicon.ico">
+                            </div>
+                            <div class="inner">
+                                <h5>稻荷社区</h5>
+                                <p>Key主题社区BBS</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://dreammad.team/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://www.dreammad.team/wp-content/uploads/2021/03/979eb16b7e4b.png">
+                            </div>
+                            <div class="inner">
+                                <h5>大馒头映画</h5>
+                                <p>筑梦（枣庄山亭区）传媒工作室</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://blog.keepdai.cn/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://cdn.jsdelivr.net/gh/Daibi-mua/jsdelivr@1.3/logo.png">
+                            </div>
+                            <div class="inner">
+                                <h5>呆逼の博客</h5>
+                                <p>一个初中生的博客</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://meow3.family.blog/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://api.beixibaobao.com/img/links/meow3.family.blog.jpeg">
+                            </div>
+                            <div class="inner">
+                                <h5>恶魔菌の记事簿</h5>
+                                <p>半文艺、半动漫的二次元美少女的涂鸦簿！</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.ratodo.com/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://p.ratodo.com/favicon.png">
+                            </div>
+                            <div class="inner">
+                                <h5>夜半观星</h5>
+                                <p>愿你成就自己的星空</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://gxusb.com/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://api.beixibaobao.com/img/links/gxusb.com.png">
+                            </div>
+                            <div class="inner">
+                                <h5>Get林琳小窝</h5>
+                                <p>有趣的东西</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://zip5.cn/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://i.v2ex.co/3dsc9eCU.jpeg">
+                            </div>
+                            <div class="inner">
+                                <h5>Huramkin-中国</h5>
+                                <p>天天摸鱼</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://jwchan.cn/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://api.beixibaobao.com/img/links/jwchan.cn.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>我爱盐酥鸡</h5>
+                                <p>真的很想要一只小肥柴耶(๑>؂<๑）< /p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="http://www.sweetsmoe.com/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://ww1.sinaimg.cn/large/006ox9TSgy1fywtalcqphg30dk0dk3yu.gif">
+                            </div>
+                            <div class="inner">
+                                <h5>甜小萌</h5>
+                                <p>甜甜哒~萌萌哒~ε๑⍥๑з</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://ctexthuang.com/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://qncdn.ctexthuang.com/1529928308315.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>绾流苏白发</h5>
+                                <p>这家伙好懒╮(╯▽╰)╭</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://flag.zeka.cloud" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://flag.zeka.cloud/static/images/avatar.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>zeka 的日记</h5>
+                                <p>这是个懒鬼</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.timochan.cn/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://api.beixibaobao.com/img/links/timo.png">
+                            </div>
+                            <div class="inner">
+                                <h5>提莫酱的博客</h5>
+                                <p>Let's start learning !</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.nyadoo.com/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://blog.cdn.nya.vin/uploads/2022/03/20220312001656365.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>喵呜睡醒了</h5>
+                                <p>去往深空的流浪......</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://chitudexiaozhi.com/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img
+                                    src="https://chitudexiaozhi.com/wp-content/uploads/2021/07/%E5%B0%8F%E9%B8%9F%E6%B8%B8%E5%85%AD%E8%8A%B1.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>吃土的小智</h5>
+                                <p>我家还蛮大的.jpg</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.cuonc.com" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://pic.cuonc.com/2020/01/27/e430dac3281e8.gif">
+                            </div>
+                            <div class="inner">
+                                <h5>小钧博客</h5>
+                                <p>愿你出走半生，归来仍是少年</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://cjlio.com" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://cjlio.com/favicon.ico">
+                            </div>
+                            <div class="inner">
+                                <h5>小陈的辣鸡屋</h5>
+                                <p>小陈的辣鸡屋</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.wapriaily.com/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://www.wapriaily.com/photo/wapriaily.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>Wapriaily</h5>
+                                <p>目之所及皆是回忆，心之所想皆是过往。</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://blog.tangbao.ltd/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://blog.tangbao.ltd/wp-content/uploads/2021/06/head.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>糖宝の小窝</h5>
+                                <p>你可能不是最棒的，但你一定是最胖的！</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://champhoon.xyz/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://api.beixibaobao.com/img/links/champhoon.xyz.png">
+                            </div>
+                            <div class="inner">
+                                <h5>澄沨的漫游茶记</h5>
+                                <p>Stay hungry, Stay foolish.</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.gymxbl.com/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://i1.iloli.xin/2019/10/logo1.png">
+                            </div>
+                            <div class="inner">
+                                <h5>孤影墨香</h5>
+                                <p>海内存知己，天涯若比邻</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://blog.vincent1230.top/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <!--<img src="https://cdn-img.beixibaobao.cn/images/EGmQ.jpg">-->
+                                <img src="https://a.vincent1230.top/blogrol/avatar.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>Vincent文朔</h5>
+                                <p>太阳出来了 雾就会散的</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.ym68.cc/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://file.api.ym68.cc/Images/Pokemond.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>闲云博客</h5>
+                                <p>一个专注学习的站点</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://huxianbk.cn" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="http://q1.qlogo.cn/g?b=qq&nk=3397926791&s=100">
+                            </div>
+                            <div class="inner">
+                                <h5>I'm小狐仙</h5>
+                                <p>喜欢一个人的感觉就是你不管在干什么心里都...</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.miaoer.xyz" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://www.miaoer.xyz/weblogo.png">
+                            </div>
+                            <div class="inner">
+                                <h5>喵二の小博客</h5>
+                                <p>缘，妙不可言</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://blog.meta-code.top/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://s4.ax1x.com/2022/01/15/7YW5qI.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>百里飞洋の博客</h5>
+                                <p>星河滚烫，无问西东。</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://dengbaosuki.top/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img
+                                    src="https://dengbaosuki.top/wp-content/uploads/2022/04/%E6%9E%9C-e1650522749215.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>祈曦的学习屋</h5>
+                                <p>记记笔记，写写日常不也挺好嘛~</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.yateam.cc/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://cdn-img.beixibaobao.cn/images/2XHo.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>七ちゃん</h5>
+                                <p>月夜の中でも永遠の夜明けの夢を信じて.</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://liangye-xo.xyz/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://cdn-img.beixibaobao.cn/images/2iIH.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>Velpro's Blog</h5>
+                                <p>Just try to be better.</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://xenolies.xyz/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://cdn-img.beixibaobao.cn/images/2sAZ.webp">
+                            </div>
+                            <div class="inner">
+                                <h5>Xenolies Blog</h5>
+                                <p>龍が如く夜空を舞い</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://xkzs.cc/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://cdn-img.beixibaobao.cn/images/2VvI.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>星空Blog</h5>
+                                <p>你要偷偷努力，然后惊艳所有人。</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://www.plsshenyun.top/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://www.plsshenyun.top/ico/ico.png">
+                            </div>
+                            <div class="inner">
+                                <h5>望夜菌的小窝</h5>
+                                <p>change and challenge!</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://hongweblog.com" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://hongweblog.com/wp-content/uploads/2022/03/00.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>HONG的小站</h5>
+                                <p>或许是个二次元?</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://dengbaosuki.top/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img
+                                    src="https://dengbaosuki.top/wp-content/uploads/2022/04/%E6%9E%9C-e1650522749215.jpg">
+                            </div>
+                            <div class="inner">
+                                <h5>祈曦的学习屋</h5>
+                                <p>记记笔记，写写日常不也挺好嘛~</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://cmu.bwmc.live/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://cmu.bwmc.live/siteicon.png">
+                            </div>
+                            <div class="inner">
+                                <h5>BWMC社区</h5>
+                                <p>一个供大家交流的社区～</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="clear" style="margin-top: 30px">
+                    <a href="https://storeweb.cn/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://api.beixibaobao.com/img/links/storeweb.cn.png">
+                            </div>
+                            <div class="inner">
+                                <h5>个体商店</h5>
+                                <p>天天摸鱼</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://blog.beixibaobao.com/girls-dormitory/" target="_blank">
+                        <div class="item">
+                            <div class="avatar">
+                                <img src="https://api.beixibaobao.com/img/links/favicon.ico">
+                            </div>
+                            <div class="inner">
+                                <h5>申请入住女子寮
+                                </h5>
+                                <p>办理入住手续吖！</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!--如果需要增加，请在此处继续更改html代码-->
+                </div>
+            </div>
+        </div> -->
+        <div class="footer">
+            <div class="container">
+                <!-- <h3>北熙宝宝@Hikurn_Xi</h3> -->
+                <p>如果恋爱有颜色，那一定是纯白色！</p>
+                <!-- 备案网站 -->
+                <!-- <p class="c">
+                    <a href="https://beian.miit.gov.cn">ICP备案：蜀ICP备18031005号-1</a>
+                </p> -->
+            </div>
+        </div>
+    </div>
+
+    <script src="./source/jquery-1.9.1.min.js"></script>
+    <script src="./source/page.js"></script>
+    <!--<script type="text/javascript" src="./stats" charset="UTF-8"></script>-->
+</body>
+
+</html>
